@@ -62,10 +62,139 @@ Muffin: 3 x $2.75 = $8.25
 Scone: 1 x $4.00 = $4.00
 Grand Total: $19.25
 
+
+----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
 
+Section2
+
+I tried a test for following functions.
+---------------------------------------
+products = [] # Hint: Consider if a list is the best structure for looking up items by name
+
+def add_item(item_name, quantity):
+    products.append([item_name, quantity])
+    print(f"{item_name} added.")
+----------------------------------------
+
+# Simple test of my function:
+# Section 2.1 - Add item
+# Course Concept: Week 5: Functions, Week 6: Lists and Functions Combined
+# AI Interaction: Asked AI to explain the function logic and structure basic test calls
+
+products = []
+
+def add_item(item_name, quantity):
+    """
+    Adds an item and its quantity to the global inventory list.
+    """
+    products.append([item_name, quantity])
+    print(f"{item_name} added.")
+
+# Simple test of your function:
+add_item("Apples", 100)
+add_item("Bananas", 50)
+print(products)
+
+# Expected output:
+# Apples added.
+# Bananas added.
+# [['Apples', 100], ['Bananas', 50]]
+
+
+---------------------------------------------------
+# Result
+Apples added.
+Bananas added.
+[['Apples', 100], ['Bananas', 50]]
+---------------------------------------------------
 
 
 
+# Section 2.2 - if item, part1
+# Course Concept: Week 6: Functions + Loops, Week 9: Indexing in Lists, Week 8: Error Identification
+# AI Interaction: Asked AI to help write test code that triggers and reveals the syntax error for later debugging
+
+def get_item_quantity(item_name):
+    """
+    Returns the quantity of a product if it exists in the inventory list.
+    Otherwise, returns 'Item not found'.
+    Contains a known SyntaxError for debugging exercise.
+    """
+    for item in products:
+        if item[0] = item_name:  # This line contains a SyntaxError
+            return item[1]
+    return "Item not found"
+
+# Simple test of your function:
+print(get_item_quantity("Apples"))
+print(get_item_quantity("Bananas"))
+print(get_item_quantity("Oranges"))
+
+# Expected output:
+# (Will not execute due to SyntaxError on line: if item[0] = item_name)
 
 
+---------------------------------------------------
+# Result (Error, which is expected)
+
+  File "<ipython-input-35-3970241409>", line 34
+    if item[0] = item_name: # Potential SyntaxError here
+       ^
+SyntaxError: cannot assign to subscript here. Maybe you meant '==' instead of '='?
+
+---------------------------------------------------
+
+
+# Section 2.3 - if item, part2
+
+I changed    if item[0] = item_name: # Potential SyntaxError here
+into         if item[0] == item_name: # Potential SyntaxError here
+, in short, "=" to "==", and used the same test code as section 2.2.
+
+# Simple test of your function:
+add_item("Apples", 100)
+add_item("Bananas", 50)
+print(products)
+
+# Expected output:
+# Apples added.
+# Bananas added.
+# [['Apples', 100], ['Bananas', 50]]
+
+---------------------------------------------------
+#Result
+Apples added.
+Bananas added.
+[['Apples', 100], ['Bananas', 50]]
+---------------------------------------------------
+
+
+
+# Section 2.4 - Implementing try-except for non-existent item lookup
+# Course Concept: Week 11: Error Handling (try-except), Week 5: Lists and Indexing
+# AI Interaction: Asked AI to explain basic try-except structure and apply it to a lookup operation
+
+def get_item_quantity_safe(item_name):
+    """
+    Returns the quantity of the specified item using try-except to handle lookup errors.
+    """
+    try:
+        for item in products:
+            if item[0] == item_name:
+                return item[1]
+        # Item not found explicitly
+        raise ValueError("Item not found")
+    except ValueError as e:
+        return str(e)
+
+# Simple test of your function:
+print(get_item_quantity_safe("Apples"))   # Expected output: 100
+print(get_item_quantity_safe("Oranges"))  # Expected output: Item not found
+
+---------------------------------------------------
+#Result
+
+120
+Item not found
+---------------------------------------------------
