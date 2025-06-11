@@ -1,1 +1,16 @@
+Section1
+
+# Section 1.1 - Get product price from predefined bakery items
+print(get_product_price("Croissant"))  # Expected output: 3.5
+print(get_product_price("Muffin"))     # Expected output: 2.75
+print(get_product_price("Scone"))      # Expected output: 4.0
+print(get_product_price("Bagel"))      # Expected output: Product not found
+
+#Result
+3.5
+2.75
+4.0
+Product not found
+
+# Section 1.2 - Add an item to the order list with validation
 
